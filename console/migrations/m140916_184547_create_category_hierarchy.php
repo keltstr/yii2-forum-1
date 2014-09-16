@@ -1,17 +1,12 @@
 <?php
 
 use yii\db\Schema;
-use yii\db\Migration;
+use console\components\Migration;
 
 class m140916_184547_create_category_hierarchy extends Migration
 {
     public function up()
     {
-        $tableOptions = null;
-        if ($this->db->driverName === 'mysql') {
-            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
-        }
-
         $this->createTable('{{%category}}', [
             'id' => Schema::TYPE_PK,
 
@@ -19,7 +14,7 @@ class m140916_184547_create_category_hierarchy extends Migration
 
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
-        ], $tableOptions);
+        ]);
 
         $this->createTable('{{%section}}', [
             'id' => Schema::TYPE_PK,
@@ -29,7 +24,7 @@ class m140916_184547_create_category_hierarchy extends Migration
 
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
-        ], $tableOptions);
+        ]);
 
         $this->createIndex('fk__section__category', '{{%section}}', 'category_id');
         $this->addForeignKey('fk__section__category', '{{%section}}', 'category_id', '{{%category}}', 'id', 'CASCADE', 'CASCADE');
