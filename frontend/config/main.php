@@ -28,6 +28,11 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'urlManager' => [
+            'rules' => [
+                ['class' => 'frontend\components\CategoryUrlRule'],
+            ],
+        ],
     ],
     'params' => $params,
 ];
