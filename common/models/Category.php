@@ -10,6 +10,7 @@ use yii\db\ActiveQuery;
  * @property integer $id
  *
  * @property string $title
+ * @property string $slug
  * @property string $description
  *
  * @property integer $created_at
@@ -46,6 +47,7 @@ class Category extends ActiveRecord
             'id' => 'ID',
 
             'title' => 'Title',
+            'slug' => 'Slug',
             'description' => 'Description',
 
             'created_at' => 'Create time',
