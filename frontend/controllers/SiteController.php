@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\LoginForm;
+use common\models\Category;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -67,7 +68,11 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories = Category::find()->with('sections')->all();
+
+        return $this->render('index', [
+            'categories' => $categories,
+        ]);
     }
 
     public function actionLogin()
