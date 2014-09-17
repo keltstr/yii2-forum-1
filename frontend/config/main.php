@@ -31,6 +31,7 @@ return [
         'urlManager' => [
             'rules' => [
                 ['class' => 'frontend\components\CategoryUrlRule'],
+                ['class' => 'frontend\components\SectionUrlRule'],
             ],
         ],
     ],
