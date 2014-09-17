@@ -1,5 +1,4 @@
 <?php
-use Yii;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -11,7 +10,7 @@ $this->title = 'My Yii Application';
     <?php foreach ($categories as $category): ?>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong><?= Html::encode($category->title); ?></strong>
+                <strong><?= Html::a(Html::encode($category->title), $category->url); ?></strong>
             </div>
 
             <?php if (!empty($category->description)): ?>
@@ -32,7 +31,7 @@ $this->title = 'My Yii Application';
                     <?php foreach ($category->sections as $section): ?>
                         <tr>
                             <td>
-                                <strong><?= Html::encode($section->title); ?></strong>
+                                <strong><?= Html::a(Html::encode($section->title), $section->url); ?></strong>
                                 <?php if (!empty($section->description)): ?>
                                     <?= Yii::$app->formatter->asParagraphs($section->description); ?>
                                 <?php endif; ?>

@@ -16,6 +16,8 @@ use yii\db\ActiveQuery;
  * @property integer $updated_at
  *
  * @property Section[] $sections
+ *
+ * @property string $url
  */
 class Category extends ActiveRecord
 {
@@ -57,5 +59,10 @@ class Category extends ActiveRecord
     public function getSections()
     {
         return $this->hasMany(Section::className(), ['category_id' => 'id']);
+    }
+
+    public function getUrl()
+    {
+        return Yii::$app->urlManager->createUrl(['category/view', 'id' => $this->id]);
     }
 }
