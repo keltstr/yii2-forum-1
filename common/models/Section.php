@@ -62,7 +62,11 @@ class Section extends ActiveRecord
     public function behaviors()
     {
         return [
-            ['class' => SluggableBehavior::className(), 'attribute' => 'title'],
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+                'attributes' => [ActiveRecord::EVENT_BEFORE_INSERT => 'slug'],
+            ],
         ];
     }
 
