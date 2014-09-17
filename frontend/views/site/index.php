@@ -12,6 +12,7 @@ $this->title = 'My Yii Application';
             <div class="panel-heading">
                 <strong><?= Html::encode($category->title); ?></strong>
             </div>
+
             <div class="panel-body">
                 <p>desc here</p>
             </div>
