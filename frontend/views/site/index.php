@@ -1,4 +1,5 @@
 <?php
+use Yii;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -13,9 +14,11 @@ $this->title = 'My Yii Application';
                 <strong><?= Html::encode($category->title); ?></strong>
             </div>
 
-            <div class="panel-body">
-                <p>desc here</p>
-            </div>
+            <?php if (!empty($category->description)): ?>
+                <div class="panel-body">
+                    <?= Yii::$app->formatter->asParagraphs($category->description); ?>
+                </div>
+            <?php endif; ?>
 
             <table class="table">
                 <thead>
@@ -24,12 +27,15 @@ $this->title = 'My Yii Application';
                         <th class="col-md-2">Comments</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php foreach ($category->sections as $section): ?>
                         <tr>
                             <td>
                                 <strong><?= Html::encode($section->title); ?></strong>
-                                <p>desc here</p>
+                                <?php if (!empty($section->description)): ?>
+                                    <?= Yii::$app->formatter->asParagraphs($section->description); ?>
+                                <?php endif; ?>
                             </td>
                             <td>123</td>
                         </tr>
