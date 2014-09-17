@@ -65,6 +65,6 @@ class Section extends ActiveRecord
 
     public function getUrl()
     {
-        return Yii::$app->urlManager->createUrl(['section/view', 'id' => $this->id]);
+        return Yii::$app->urlManager->createUrl(['section/view', 'id' => $this->id, 'slug' => $this->slug]);
     }
 }

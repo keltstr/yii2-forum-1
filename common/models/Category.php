@@ -63,6 +63,6 @@ class Category extends ActiveRecord
 
     public function getUrl()
     {
-        return Yii::$app->urlManager->createUrl(['category/view', 'id' => $this->id]);
+        return Yii::$app->urlManager->createUrl(['category/view', 'id' => $this->id, 'slug' => $this->slug]);
     }
 }
