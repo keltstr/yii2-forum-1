@@ -9,7 +9,10 @@ use yii\db\ActiveQuery;
 /**
  * @property integer $id
  * @property integer $category_id
+ *
  * @property string $title
+ * @property string $description
+ *
  * @property integer $created_at
  * @property integer $updated_at
  *
@@ -41,7 +44,10 @@ class Section extends ActiveRecord
         return [
             'id' => 'ID',
             'category_id' => 'Category',
+
             'title' => 'Title',
+            'description' => 'Description',
+
             'created_at' => 'Create time',
             'updated_at' => 'Update time',
         ];

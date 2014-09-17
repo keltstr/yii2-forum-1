@@ -8,7 +8,10 @@ use yii\db\ActiveQuery;
 
 /**
  * @property integer $id
+ *
  * @property string $title
+ * @property string $description
+ *
  * @property integer $created_at
  * @property integer $updated_at
  *
@@ -39,7 +42,10 @@ class Category extends ActiveRecord
     {
         return [
             'id' => 'ID',
+
             'title' => 'Title',
+            'description' => 'Description',
+
             'created_at' => 'Create time',
             'updated_at' => 'Update time',
         ];
