@@ -11,6 +11,12 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'gii'],
     'controllerNamespace' => 'console\controllers',
+    'controllerMap' => [
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'templateFile' => '@console/views/migration.php',
+        ],
+    ],
     'modules' => [
         'gii' => 'yii\gii\Module',
     ],
