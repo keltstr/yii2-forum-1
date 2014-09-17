@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\db\ActiveQuery;
 use yii\behaviors\SluggableBehavior;
+use yii\helpers\Url;
 
 /**
  * @property integer $id
@@ -73,6 +74,10 @@ class Category extends ActiveRecord
 
     public function getUrl()
     {
-        return Yii::$app->urlManager->createUrl(['category/view', 'id' => $this->id, 'slug' => $this->slug]);
+        $route = ['category/view', 'id' => $this->id];
+        if (!empty($this->slug)) {
+            $route['slug'] = $this->slug;
+        }
+        return Url::toRoute($route);
     }
 }
