@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\ActiveQuery;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * @property integer $id
@@ -54,6 +55,13 @@ class Section extends ActiveRecord
 
             'created_at' => 'Create time',
             'updated_at' => 'Update time',
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            ['class' => SluggableBehavior::className(), 'attribute' => 'title'],
         ];
     }
 
