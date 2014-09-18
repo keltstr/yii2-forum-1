@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\db\ActiveQuery;
 use yii\behaviors\SluggableBehavior;
+use yii\helpers\Url;
 
 /**
  * @property integer $id
@@ -21,6 +22,8 @@ use yii\behaviors\SluggableBehavior;
  *
  * @property Section $section
  * @property Category $category
+ *
+ * @property string $topic
  */
 class Topic extends ActiveRecord
 {
@@ -84,5 +87,14 @@ class Topic extends ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    public function getUrl()
+    {
+        $route = ['topic/view', 'id' => $this->id];
+        if (!empty($this->slug)) {
+            $route['slug'] = $this->slug;
+        }
+        return Url::toRoute($route);
     }
 }
