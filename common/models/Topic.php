@@ -40,7 +40,14 @@ class Topic extends ActiveRecord
      */
     public function rules()
     {
-        return [];
+        return [
+            [['title', 'text'], 'trim'],
+            [['title', 'text', 'category_id', 'section_id'], 'required'],
+            ['title', 'string', 'min' => 5, 'max' => 255],
+            ['text', 'string', 'min' => 5, 'max' => 20000],
+            ['category_id', 'exist', 'targetClass' => Category::className(), 'targetAttribute' => 'id'],
+            ['section_id', 'exist', 'targetClass' => Section::className(), 'targetAttribute' => 'id'],
+        ];
     }
 
     /**
