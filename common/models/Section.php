@@ -20,6 +20,7 @@ use yii\helpers\Url;
  * @property integer $updated_at
  *
  * @property Category $category
+ * @property Topic[] $topics
  *
  * @property string $url
  */
@@ -76,6 +77,14 @@ class Section extends ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getTopics()
+    {
+        return $this->hasMany(Topic::className(), ['category_id' => 'id']);
     }
 
     public function getUrl()
