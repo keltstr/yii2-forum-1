@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\db\ActiveQuery;
 use yii\behaviors\SluggableBehavior;
+use yii\behaviors\TimestampBehavior;
 use yii\helpers\Url;
 
 /**
@@ -76,6 +77,9 @@ class Topic extends ActiveRecord
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'title',
                 'attributes' => [ActiveRecord::EVENT_BEFORE_INSERT => 'slug'],
+            ],
+            [
+                'class' => TimestampBehavior::className(),
             ],
         ];
     }
