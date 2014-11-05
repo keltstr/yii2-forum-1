@@ -23,7 +23,17 @@ class TopicController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
+            'access1' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update', 'sections'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'access2' => [
                 'class' => AccessControl::className(),
                 'only' => ['sections'],
                 'rules' => [
