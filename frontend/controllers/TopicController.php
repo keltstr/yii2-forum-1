@@ -38,12 +38,10 @@ class TopicController extends Controller
         if ($topic->load(Yii::$app->request->post()) && $topic->save()) {
             return $this->redirect($topic->url);
         }
-        $categories = Category::find()->all();
-        $sections = empty($topic->category_id) ? [] : Section::findAll(['category_id' => $topic->category_id]);
         return $this->render('create', [
             'topic' => $topic,
-            'categories' => $categories,
-            'sections' => $sections,
+            'categories' => Category::find()->all(),
+            'sections' => empty($topic->category_id) ? [] : Section::findAll(['category_id' => $topic->category_id]),
         ]);
     }
 
