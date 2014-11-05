@@ -58,6 +58,7 @@ class TopicController extends Controller
     /**
      * Action method for auto completion sections by the given parent category.
      * @param integer $id of the category to be used to auto complete sections.
+     * @return string|Response action method execution result.
      */
     public function actionSections($id)
     {
@@ -66,6 +67,6 @@ class TopicController extends Controller
             ['(choose section)'],
             ArrayHelper::map($sections, 'id', 'title')
         );
-        echo Html::renderSelectOptions(null, $items);
+        return Html::renderSelectOptions(null, $items);
     }
 }
