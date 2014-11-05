@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use yii\web\Response;
 use yii\web\Controller;
+use yii\filters\AccessControl;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use common\models\Topic;
@@ -16,6 +17,25 @@ use common\models\Section;
  */
 class TopicController extends Controller
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['sections'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'matchCallback' => function ($rule, $action) { return Yii::$app->request->isAjax; }
+                    ],
+                ],
+            ],
+        ];
+    }
+
     /**
      * Action method for displaying an existing forum topic.
      * @param integer $id of the topic to be displayed.
